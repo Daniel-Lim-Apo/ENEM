@@ -1,0 +1,1 @@
+INSERT INTO `mydb`.`tb_questionario_socioeconomico` (`nu_inscricao_participante`, `cd_nivel_escolaridade_pai`, `cd_nivel_escolaridade_mae`, `cd_grupo_ocupacao_pai`, `cd_grupo_ocupacao_mae`, `cd_faixa_renda_familiar`, `bl_acesso_internet`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL);
