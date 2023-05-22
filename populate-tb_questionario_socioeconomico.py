@@ -43,11 +43,22 @@ enem_2021 = pd.read_csv('..\..\dados\microdados_enem_2022\DADOS\MICRODADOS_ENEM_
 print(enem_2021.columns)
 
 data = enem_2021[["id", "day", "airline", "destination"]]
+
+#     nu_inscricao_participante bigint NOT NULL,
+#     cd_nivel_escolaridade_pai character varying(1) COLLATE pg_catalog."default",
+#     cd_nivel_escolaridade_mae character varying(1) COLLATE pg_catalog."default",
+#     cd_grupo_ocupacao_pai character varying(1) COLLATE pg_catalog."default",
+#     cd_grupo_ocupacao_mae character varying(1) COLLATE pg_catalog."default",
+#     cd_faixa_renda_familiar character varying(1) COLLATE pg_catalog."default",
+#     bl_acesso_internet boolean,
+
 # Create DataFrame
 print(data)
 
 # converting data to sql
 data.to_sql('airlines_final', conn, if_exists='replace')
+
+
 
 # fetching all rows
 sql1 = '''select * from airlines_final;'''
