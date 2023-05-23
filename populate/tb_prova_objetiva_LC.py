@@ -4,26 +4,28 @@ from sqlalchemy import create_engine
 import time
 
 
-def populate_table_tb_prova_objetiva(conn_string, originDataFrame, tableName):
+def populate_table_tb_prova_objetiva_LC(conn_string, originDataFrame, tableName):
+
+    originDataFrame.insert(1, 'cd_disciplina', 3)
 
     dfParticipante = originDataFrame[[
-        "NU_INSCRICAO", 'Q001', 'Q002', 'Q003', 'Q004', 'Q006', 'Q025']]
+        "NU_INSCRICAO", 'cd_disciplina', 'TP_PRESENCA_LC', 'CO_PROVA_LC', 'NU_NOTA_LC']]
 
-    dfParticipante.columns = ['nu_inscricao_participante', 
-                                'cd_disciplina',
-                                'cd_tipo_presenca',
-                                'cd_tipo_prova',
-                                'nu_nota',
-                            ]
+    dfParticipante.columns = ['nu_inscricao_participante',
+                              'cd_disciplina',
+                              'cd_tipo_presenca',
+                              'cd_tipo_prova',
+                              'nu_nota',
+                              ]
 
 # CO_PROVA_CN
 # CO_PROVA_CH
 # CO_PROVA_LC
 # CO_PROVA_MT
-	# (1,'Ciências da Natureza'),
-	# (2,'Ciências Humanas'),
-	# (3,'Linguagens e Códigos'),
-	# (4,'Matemática');
+    # (1,'Ciências da Natureza'),
+    # (2,'Ciências Humanas'),
+    # (3,'Linguagens e Códigos'),
+    # (4,'Matemática');
 
 #   (0,'Faltou à prova'),
 # 	(1,'Presente na prova'),
