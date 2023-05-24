@@ -12,6 +12,7 @@ from populate.tb_prova_objetiva_CN import populate_table_tb_prova_objetiva_CN
 from populate.tb_prova_objetiva_CH import populate_table_tb_prova_objetiva_CH
 from populate.tb_prova_objetiva_LC import populate_table_tb_prova_objetiva_LC
 from populate.tb_prova_objetiva_MT import populate_table_tb_prova_objetiva_MT
+from populate.tb_redacao import populate_table_tb_redacao
 
 # INPUT YOUR OWN CONNECTION STRING HERE
 conn_string = 'postgresql://postgres:z77zpoqq@localhost:5432/enem'
@@ -24,8 +25,10 @@ enem_2021 = pd.read_csv(
     'dados\microdados_enem_2021\DADOS\DadosByUF\MICRODADOS_ENEM_2021_AC.csv', encoding='utf-8', sep=',')
 
 # populate_table_tb_participante(conn_string, enem_2021, 'tb_participante')
-# populate_table_tb_escola_participante(
-#     conn_string, enem_2021, 'tb_escola_participante')
+
+populate_table_tb_escola_participante(
+    conn_string, enem_2021, 'tb_escola_participante')
+
 # populate_table_tb_questionario_socioeconomico(
 #     conn_string, enem_2021, 'tb_questionario_socioeconomico')
 
@@ -46,5 +49,8 @@ enem_2021 = pd.read_csv(
 
 # populate_table_tb_prova_objetiva_MT(
 #     conn_string, enem_2021, 'tb_prova_objetiva')
+
+# populate_table_tb_redacao(
+#     conn_string, enem_2021, 'tb_redacao')
 
 print("End of popluating tables")
