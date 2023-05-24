@@ -6,10 +6,10 @@ import time
 
 def populate_table_tb_prova_objetiva_LC(conn_string, originDataFrame, tableName):
 
-    originDataFrame.insert(1, 'cd_disciplina', 3)
-
     dfParticipante = originDataFrame[[
-        "NU_INSCRICAO", 'cd_disciplina', 'TP_PRESENCA_LC', 'CO_PROVA_LC', 'NU_NOTA_LC']]
+        "NU_INSCRICAO", 'TP_PRESENCA_LC', 'CO_PROVA_LC', 'NU_NOTA_LC']]
+
+    dfParticipante.insert(1, 'cd_disciplina', 3)
 
     dfParticipante.columns = ['nu_inscricao_participante',
                               'cd_disciplina',

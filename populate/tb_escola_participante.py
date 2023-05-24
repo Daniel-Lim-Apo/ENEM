@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 import time
 
 
-def populate_table(conn_string, originDataFrame, tableName):
+def populate_table_tb_escola_participante(conn_string, originDataFrame, tableName):
 
     dfParticipante = originDataFrame[["NU_INSCRICAO", "TP_FAIXA_ETARIA", "TP_SEXO", "TP_ESTADO_CIVIL", "TP_COR_RACA",
                                       "TP_NACIONALIDADE", "TP_ST_CONCLUSAO", "TP_ANO_CONCLUIU", "IN_TREINEIRO"]]

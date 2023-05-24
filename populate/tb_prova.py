@@ -15,28 +15,6 @@ def populate_table_tb_prova(conn_string, originDataFrame, tableName):
                               'cd_municipio'
                               ]
 
-# CO_PROVA_CN
-# CO_PROVA_CH
-# CO_PROVA_LC
-# CO_PROVA_MT
-    # (1,'Ciências da Natureza'),
-    # (2,'Ciências Humanas'),
-    # (3,'Linguagens e Códigos'),
-    # (4,'Matemática');
-
-#   (0,'Faltou à prova'),
-# 	(1,'Presente na prova'),
-# 	(2,'Eliminado na prova');
-
-# nu_inscricao_participante,
-#   cd_disciplina,
-#   cd_tipo_presenca,
-#   cd_tipo_prova,
-#   nu_nota,
-
-    # dfParticipante['bl_acesso_internet'] = dfParticipante['bl_acesso_internet'].astype(
-    #     bool)
-
     db = create_engine(conn_string)
     conn = db.connect()
     start_time = time.time()
