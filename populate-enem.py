@@ -9,11 +9,11 @@ conn_string = 'postgres://postgres:pass@127.0.0.1/Airlines_Database'
 db = create_engine(conn_string)
 conn = db.connect()
 conn1 = psycopg2.connect(
-	database="Airlines_Database",
-user='postgres',
-password='pass',
-host='127.0.0.1',
-port= '5432'
+    database="Airlines_Database",
+    user='postgres',
+    password='pass',
+    host='127.0.0.1',
+    port='5432'
 )
 
 conn1.autocommit = True
@@ -30,18 +30,18 @@ cursor.execute(sql)
 # import the csv file to create a dataframe
 data = pd.read_csv("airlines_final.csv")
 
-data = data[["id","day","airline","destination"]]
+data = data[["id", "day", "airline", "destination"]]
 # Create DataFrame
 print(data)
 
 # converting data to sql
-data.to_sql('airlines_final', conn, if_exists= 'replace')
+data.to_sql('airlines_final', conn, if_exists='replace')
 
 # fetching all rows
-sql1='''select * from airlines_final;'''
+sql1 = '''select * from airlines_final;'''
 cursor.execute(sql1)
 for i in cursor.fetchall():
-	print(i)
+    print(i)
 
 conn1.commit()
 conn1.close()

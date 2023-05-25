@@ -2,9 +2,10 @@ import pandas as pd
 import time
 from sqlalchemy import create_engine
 import time
+import asyncio
 
 
-def populate_table_tb_prova_objetiva_CH(conn_string, originDataFrame, tableName):
+async def populate_table_tb_prova_objetiva_CH(conn_string, originDataFrame, tableName):
 
     dfParticipante = originDataFrame[[
         "NU_INSCRICAO", 'TP_PRESENCA_CH', 'CO_PROVA_CH', 'NU_NOTA_CH']]
