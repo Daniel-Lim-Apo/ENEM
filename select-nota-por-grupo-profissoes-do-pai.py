@@ -17,12 +17,12 @@ async def main():
     conn = db.connect()
     start_time = time.time()
 
-    df = pd.read_sql_query('select tfrf.ds_faixa_renda_familiar as rendaFamiliar, avg(tpo.nu_nota) as nota, stddev(tpo.nu_nota) as desviopadrao from tb_participante tp \
-            inner join tb_questionario_socioeconomico tqs on  tqs.nu_inscricao_participante = tp.nu_inscricao_participante \
-	        inner join tb_faixa_renda_familiar tfrf on  tfrf.id_faixa_renda_familiar = tqs.cd_faixa_renda_familiar \
-	        inner join  tb_prova_objetiva tpo on  tpo.nu_inscricao_participante  = tp.nu_inscricao_participante \
-	        group by tfrf.ds_faixa_renda_familiar \
-	        order by tfrf.ds_faixa_renda_familiar', con=conn)
+    df = pd.read_sql_query('select tgo.id_grupo_ocupacao as id_grupo_ocupacao_pai, avg(tpo.nu_nota) as notamedia, stddev(tpo.nu_nota) as desviopadrao from tb_participante tp\
+        inner join tb_questionario_socioeconomico tqs on  tqs.nu_inscricao_participante = tp.nu_inscricao_participante \
+        inner join  tb_prova_objetiva tpo on  tpo.nu_inscricao_participante  = tp.nu_inscricao_participante \
+        inner join  tb_grupo_ocupacao tgo on tgo.id_grupo_ocupacao  = tqs.cd_grupo_ocupacao_pai  \
+        group by tgo.id_grupo_ocupacao  \
+        order by tgo.id_grupo_ocupacao ', con=conn)
 
     # print(df.columns)
     # print(df.dtypes)
@@ -35,10 +35,10 @@ async def main():
     # plt.axhline(0, color="k")
 
     x_axis = df["desviopadrao"]
-    y_axis = df["nota"]
+    y_axis = df["notamedia"]
 
     sns.set_theme()
-    sns.scatterplot(x=x_axis, y=y_axis, hue=df.rendafamiliar, s=200)
+    sns.scatterplot(x=x_axis, y=y_axis, hue=df.id_grupo_ocupacao_pai, s=200)
     plt.title("Notas pelo grupo de ocupação da figura paterna - ENEM 2021")
     # sns.boxplot(data=df, x='avg', y='stddev')
 
