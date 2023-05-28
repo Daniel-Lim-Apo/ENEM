@@ -21,8 +21,13 @@ async def populate_table_tb_questionario_socioeconomico(conn_string, originDataF
 # cd_faixa_renda_familiar
 # bl_acesso_internet
 
-    dfParticipante['bl_acesso_internet'] = dfParticipante['bl_acesso_internet'].astype(
-        bool)
+    # dfParticipante['bl_acesso_internet'] = dfParticipante['bl_acesso_internet'].astype(
+    #     bool)
+
+    booleanDictionary = {'A': False, 'B': True}
+
+    dfParticipante['bl_acesso_internet'] = dfParticipante['bl_acesso_internet'].map(
+        booleanDictionary)
 
     db = create_engine(conn_string)
     conn = db.connect()

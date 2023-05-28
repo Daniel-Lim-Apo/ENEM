@@ -28,35 +28,35 @@ async def main():
         'dados\microdados_enem_2021\DADOS\MICRODADOS_ENEM_2021.csv', encoding='latin-1', sep=';')
 
     await asyncio.gather(
-        populate_table_tb_municipio(
-            conn_string, enem_2021, 'tb_municipio'),
+        # populate_table_tb_municipio(
+        #     conn_string, enem_2021, 'tb_municipio'),
 
-        populate_table_tb_participante(
-            conn_string, enem_2021, 'tb_participante'),
+        # populate_table_tb_participante(
+        #     conn_string, enem_2021, 'tb_participante'),
 
         populate_table_tb_escola_participante(
             conn_string, enem_2021, 'tb_escola_participante'),
 
-        populate_table_tb_questionario_socioeconomico(
-            conn_string, enem_2021, 'tb_questionario_socioeconomico'),
+        # populate_table_tb_questionario_socioeconomico(
+        #     conn_string, enem_2021, 'tb_questionario_socioeconomico'),
 
-        populate_table_tb_prova(
-            conn_string, enem_2021, 'tb_prova'),
+        # populate_table_tb_prova(
+        #     conn_string, enem_2021, 'tb_prova'),
 
-        populate_table_tb_prova_objetiva_CN(
-            conn_string, enem_2021, 'tb_prova_objetiva'),
+        # populate_table_tb_prova_objetiva_CN(
+        #     conn_string, enem_2021, 'tb_prova_objetiva'),
 
-        populate_table_tb_prova_objetiva_CH(
-            conn_string, enem_2021, 'tb_prova_objetiva'),
+        # populate_table_tb_prova_objetiva_CH(
+        #     conn_string, enem_2021, 'tb_prova_objetiva'),
 
-        populate_table_tb_prova_objetiva_LC(
-            conn_string, enem_2021, 'tb_prova_objetiva'),
+        # populate_table_tb_prova_objetiva_LC(
+        #     conn_string, enem_2021, 'tb_prova_objetiva'),
 
-        populate_table_tb_prova_objetiva_MT(
-            conn_string, enem_2021, 'tb_prova_objetiva'),
+        # populate_table_tb_prova_objetiva_MT(
+        #     conn_string, enem_2021, 'tb_prova_objetiva'),
 
-        populate_table_tb_redacao(
-            conn_string, enem_2021, 'tb_redacao'),
+        # populate_table_tb_redacao(
+        #     conn_string, enem_2021, 'tb_redacao'),
     ),
     print("End of popluating tables"),
 asyncio.run(main())

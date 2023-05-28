@@ -3,6 +3,7 @@ import time
 from sqlalchemy import create_engine
 import time
 import asyncio
+import numpy as np
 
 
 async def populate_table_tb_escola_participante(conn_string, originDataFrame, tableName):
@@ -13,7 +14,7 @@ async def populate_table_tb_escola_participante(conn_string, originDataFrame, ta
                                       "TP_DEPENDENCIA_ADM_ESC",
                                       "TP_LOCALIZACAO_ESC",
                                       "TP_SIT_FUNC_ESC",
-                                      "CO_MUNICIPIO_ESC"]].dropna()
+                                      "CO_MUNICIPIO_ESC"]].dropna(subset=['TP_ESCOLA'])
 
     dfParticipante.columns = ['nu_inscricao_participante',
                               'sg_tipo_escola',
@@ -25,15 +26,20 @@ async def populate_table_tb_escola_participante(conn_string, originDataFrame, ta
 
     dfParticipante['sg_tipo_escola'] = dfParticipante['sg_tipo_escola'].astype(
         int)
-    dfParticipante['sg_tipo_ensino'] = dfParticipante['sg_tipo_ensino'].astype(
-        int)
-    dfParticipante['cd_dependencia_administrativa'] = dfParticipante['cd_dependencia_administrativa'].astype(
-        int)
-    dfParticipante['sg_localizacao'] = dfParticipante['sg_localizacao'].astype(
-        int)
-    dfParticipante['cd_situacao_funcionamento'] = dfParticipante['cd_situacao_funcionamento'].astype(
-        int)
+    # dfParticipante['sg_tipo_ensino'] = dfParticipante['sg_tipo_ensino'].astype(
+    #     int)
+    # dfParticipante['cd_dependencia_administrativa'] = dfParticipante['cd_dependencia_administrativa'].astype(
+    #     int)
+    # dfParticipante['sg_localizacao'] = dfParticipante['sg_localizacao'].astype(
+    #     int)
+    # dfParticipante['cd_situacao_funcionamento'] = dfParticipante['cd_situacao_funcionamento'].astype(
+    #     int)
+
+    dfParticipante['cd_municipio'] = dfParticipante['cd_municipio'].fillna(-1)
     dfParticipante['cd_municipio'] = dfParticipante['cd_municipio'].astype(int)
+    dfParticipante['cd_municipio'] = dfParticipante['cd_municipio'].astype(str)
+    dfParticipante['cd_municipio'] = dfParticipante['cd_municipio'].replace(
+        '-1', np.nan)
 
     dfParticipante['sg_localizacao'] = dfParticipante['sg_localizacao'].replace({
                                                                                 1: 'U', 2: 'R'})
